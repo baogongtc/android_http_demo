@@ -1,0 +1,23 @@
+package android.xuanyou.http.engine;
+
+import android.xuanyou.http.entity.HttpMethod;
+import android.xuanyou.http.utils.HttpRequestUtil;
+
+import com.loopj.android.http.RequestParams;
+
+public abstract class RecommentTask extends BaseHttpTask {
+
+	public RecommentTask(String URL) {
+		super(URL);
+	}
+
+	public void acquireList(int pageSize, int pageIndex, String columnId, String IMEI) {
+		RequestParams params = new RequestParams();
+		params.put("pageSize", pageSize);
+		params.put("pageIndex", pageIndex);
+		params.put("columnId", columnId);
+		params.put("IMEI", IMEI);
+		HttpRequestUtil.setTaskParamsAndRequest(RecommentTask.this, params, HttpMethod.GET);
+	}
+	
+}

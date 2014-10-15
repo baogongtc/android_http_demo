@@ -1,0 +1,23 @@
+package android.xuanyou.http.engine;
+
+import android.xuanyou.http.entity.HttpMethod;
+import android.xuanyou.http.utils.HttpRequestUtil;
+
+import com.loopj.android.http.RequestParams;
+
+public abstract class DownloadTask extends BaseHttpTask {
+
+	public DownloadTask(String URL) {
+		super(URL);
+
+	}
+
+	public void acquireDownloadDetail(String id) {
+		RequestParams params = new RequestParams();
+		params.put("id", params);
+		HttpRequestUtil.setTaskParamsAndRequest(DownloadTask.this, params, HttpMethod.GET);
+	}
+	
+	
+
+}

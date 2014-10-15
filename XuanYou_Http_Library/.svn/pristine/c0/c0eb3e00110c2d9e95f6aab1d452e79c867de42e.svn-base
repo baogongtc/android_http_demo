@@ -1,0 +1,61 @@
+package android.xuanyou.http.engine;
+
+import android.xuanyou.http.entity.HttpMethod;
+import android.xuanyou.http.utils.HttpRequestUtil;
+
+import com.loopj.android.http.RequestParams;
+
+public abstract class DataCollectingTask extends BaseHttpTask{
+
+	public DataCollectingTask(String URL) {
+		super(URL);
+		// TODO Auto-generated constructor stub
+	}
+	
+	/**
+	 * 三十四、游戏下的新品  
+	 * 三十五、游戏下的排行
+	 * @param pageSize
+	 * @param pageIndex
+	 * @param columnId
+	 */
+	public void acquireNewsInGame(int pageSize,int pageIndex,String columnId){
+		RequestParams params = new RequestParams();	
+        params.put("pageSize", pageSize);
+        params.put("pageIndex",pageIndex);
+        params.put("columnId", columnId);
+		HttpRequestUtil.setTaskParamsAndRequest(DataCollectingTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 三十八.客户端得到用户图片 接口
+	 * @param id
+	 */
+	public void acquireUserImage(String id){
+		RequestParams params = new RequestParams();	
+        params.put("id", id);
+		HttpRequestUtil.setTaskParamsAndRequest(DataCollectingTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 三十九.用户0下载1完成2安装3卸载
+	 */
+	public void reportUserBeHavior(String imei,String scid,String paid,String package_version,
+			String package_version_code,String operateStatus,String ownerId,String marketVersion,
+			String downloadType,String appPackage){
+		RequestParams params = new RequestParams();	
+        params.put("download.imei", imei);
+        params.put("download.scid", scid);
+        params.put("download.paid", paid);
+        params.put("Download.package_version", package_version);
+        params.put("Download.package_version_code", package_version_code);
+        params.put("download.operateStatus", operateStatus);
+        params.put("download.ownerId", ownerId);
+        params.put("download.marketVersion", marketVersion);
+        params.put("download.downloadType", downloadType);
+        params.put("download.appPackage", appPackage);
+		HttpRequestUtil.setTaskParamsAndRequest(DataCollectingTask.this, params, HttpMethod.POST);
+		
+	}
+
+}

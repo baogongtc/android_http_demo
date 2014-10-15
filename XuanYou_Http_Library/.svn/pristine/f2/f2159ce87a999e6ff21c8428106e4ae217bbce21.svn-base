@@ -1,0 +1,31 @@
+package android.xuanyou.http.engine;
+
+import android.xuanyou.http.entity.HttpMethod;
+import android.xuanyou.http.utils.HttpRequestUtil;
+
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+/**
+ * 排行榜
+ * @author Administrator
+ *
+ */
+public abstract class RainkingTask extends BaseHttpTask {
+
+	public RainkingTask(String URL) {
+		super(URL);
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * 三十、用户修改图片地址接口
+	 * @param id
+	 */
+	public void updateImgUrl(String id){
+		RequestParams params = new RequestParams();
+		params.put("id", id);
+		HttpRequestUtil.setTaskParamsAndRequest( RainkingTask.this, params, HttpMethod.POST);
+	}
+	
+}

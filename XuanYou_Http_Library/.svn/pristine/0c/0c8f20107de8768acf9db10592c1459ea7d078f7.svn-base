@@ -1,0 +1,33 @@
+package android.xuanyou.http.engine;
+
+import android.xuanyou.http.entity.HttpMethod;
+import android.xuanyou.http.utils.HttpRequestUtil;
+
+import com.loopj.android.http.RequestParams;
+
+public abstract class ManagerTask extends BaseHttpTask {
+
+	public ManagerTask(String URL) {
+		super(URL);
+	}
+
+	public void acquireDownloadHistory(String id) {
+		acquireBase(id);
+	}
+
+	private void acquireBase(String id) {
+		RequestParams params = new RequestParams();
+		params.put("id", params);
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.GET);
+	}
+	
+	public void cancelCollection(String suid,String appId,String channelCode,int type){
+		RequestParams params = new RequestParams();
+		params.put("suid", suid);
+		params.put("appId", appId);
+		params.put("channelCode", channelCode);
+		params.put("type", type);
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.POST);
+	}
+
+}

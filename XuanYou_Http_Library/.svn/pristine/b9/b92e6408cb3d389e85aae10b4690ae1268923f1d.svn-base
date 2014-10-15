@@ -1,0 +1,295 @@
+package android.xuanyou.http.engine;
+
+import android.xuanyou.http.entity.HttpMethod;
+import android.xuanyou.http.utils.HttpRequestUtil;
+
+import com.alibaba.fastjson.JSON;
+import com.loopj.android.http.RequestParams;
+
+public abstract class ManagerTask extends BaseHttpTask {
+
+	public ManagerTask(String URL) {
+		super(URL);
+	}
+
+	/**
+               六、用户下载历史接口
+	 * @param id
+	 */
+	public void acquireDownloadHistory(String id) {
+		acquireBase(id);
+	}
+
+	
+	/**
+	 *
+	 * 五十五、华硕游戏分类接口
+	 * @param id
+	 */
+	private void acquireBase(String id) {
+		RequestParams params = new RequestParams();
+		params.put("id", params);
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.GET);
+	}
+	
+	/**
+	 *十一、  我的收藏接口 取消收藏
+	 * @param suid
+	 * @param appId
+	 * @param channelCode
+	 * @param type
+	 */
+	public void cancelCollection(String suid,String appId,String channelCode,int type){
+		RequestParams params = new RequestParams();
+		params.put("suid", suid);
+		params.put("appId", appId);
+		params.put("channelCode", channelCode);
+		params.put("type", type);
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 十二、用户修改密码接口
+	 * @param userId
+	 * @param userPwd
+	 * @param oldPwd
+	 */
+	public void modifyUserPassword(String userId,String userPwd,String oldPwd){
+		RequestParams params = new RequestParams();
+		params.put("user.id", userId);
+		params.put("user.pwd", userPwd);
+		params.put("oldPwd", oldPwd);
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 十三、用户修改用户名接口
+	 * @param userId
+	 * @param userNickName
+	 */
+	public void modifyUserName(String userId,String userNickName){
+		
+		RequestParams params = new RequestParams();
+		params.put("user.id", userId);
+		params.put("user. nickName", userNickName);
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 十四、用户找回密码接口
+	 * @param email
+	 */
+	public void findUserPassword(String email){
+		RequestParams params = new RequestParams();
+		params.put("email", email);
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 十五、用户登录接口
+	 */
+	public void userLogin(String account,String password){
+		RequestParams params = new RequestParams();
+		params.put("user.account",account);
+		params.put("user.pwd",password);
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 十六、用户注册接口
+	 */
+	public void userRegist(String account,String password,String mobile,int type,int regestType){
+		RequestParams params = new RequestParams();
+		params.put("user.account",account);
+		params.put("user.pwd",password);
+		params.put("user.mobile",mobile);
+		params.put("user.type",type);
+		params.put("regestType",regestType);
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.POST);
+	}
+	/**
+	 * 十七、提交用户评价接口
+	 * @param baseId
+	 * @param name
+	 * @param userContent
+	 * @param suid
+	 * @param source
+	 * @param mobileType
+	 * @param comstar
+	 */
+	public void submitUserComment(String baseId,String name,String userContent,String suid,String source,
+			String mobileType,String comstar){
+		
+		RequestParams params = new RequestParams();
+		params.put("comment.baseId",baseId);
+		params.put("comment.name",name);
+		params.put("comment.userContent",userContent);
+		params.put("comment. suid",suid);
+		params.put("comment.source",source);
+		params.put("comment.mobileType",mobileType);
+		params.put("comment.comStar",comstar);
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 十九、查询产品评价接口
+	 * @param appId
+	 * @param pageSize
+	 * @param pageIndex
+	 * @param channelCode
+	 */
+	public void queryProductComment(String appId,String pageSize,String pageIndex,String channelCode){
+		RequestParams params = new RequestParams();
+		params.put("appId",appId);
+		params.put("pageSize",pageSize);
+		params.put("pageIndex",pageIndex);
+		params.put("channelCode",channelCode);
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.POST);
+	}
+	/**
+	 * 二十五. 应用(资讯/娱乐)收藏列表接口
+	 * @param pageSize
+	 * @param pageIndex
+	 * @param suid
+	 * @param channelCode
+	 * @param type
+	 */
+	public void collectionResult(int pageSize,int pageIndex,String suid,String channelCode,int type){
+		RequestParams params = new RequestParams();
+		params.put("pageSize", pageSize);
+		params.put("pageIndex", pageIndex);
+		params.put("suid", suid);
+		params.put("channelCode", channelCode);
+		params.put("type", type);
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 二十六-1、客户端后台推送是否存在接口
+	 */
+	public void isBackgroundPushExist(){
+		RequestParams params = new RequestParams();	
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 二十六-2、客户端后台推送接口
+	 * @param imei
+	 * @param packageVersionCode
+	 * @param channelCode
+	 */
+	public void backgroundPushResult(String imei,String packageVersionCode,String channelCode){
+		
+		RequestParams params = new RequestParams();	
+		params.put("imei", imei);
+		params.put("packageVersionCode", packageVersionCode);
+		params.put("channelCode", channelCode);
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.POST);
+		
+	}
+	
+	/**
+	 * 二十七、客户端推送安装成功回报 记录接口
+	 * @param jsonStr
+	 */
+	public void pushSucessReportBack(JSON jsonStr){
+		RequestParams params = new RequestParams();	
+		params.put("jsonStr", jsonStr);
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.POST);
+		
+	}
+	
+	/**
+	 * 三十六、游戏下的排行下的飙升 最热 好评
+	 * 四十四 精品发现接口
+	 * 四十五 应用下的最新
+	 * 四十六 应用下的最新的分页
+	 * @param pageSize
+	 * @param pageIndex
+	 * @param columnId
+	 */
+	public void getAllInGameRanking(int pageSize,int pageIndex,String columnId){
+		
+		RequestParams params = new RequestParams();	
+		params.put("pageSize", pageSize);
+		params.put("pageIndex", pageIndex);
+		params.put("columnId", columnId);
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 四十一.域名配置路径
+	 */
+	public void configureDomain(){
+		
+		RequestParams params = new RequestParams();	
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 五十、版本推送接口
+	 */
+	public void pushVersionUpdate(String channelCode){
+		RequestParams params = new RequestParams();	
+		params.put("channelCode", channelCode);
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 五十一 用户操作行为记录表
+	 */
+	public void userBehaviourRecord(String imei,String scid,String operation,String mac,String telphone,
+			int type,String marketVersion){
+		RequestParams params = new RequestParams();	
+		params.put("imei", imei);
+		params.put("scid", scid);
+		params.put("operation", operation);
+		params.put("mac", mac);
+		params.put("telphone", telphone);
+		params.put("type",type);
+		params.put("marketVersion", marketVersion);
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 五十二、地摊吧版本升级
+	 * @param channelCode
+	 * @param name
+	 * @param packageVersionCode
+	 */
+	public void versionUpdate(String channelCode,String name,String packageVersionCode){
+		RequestParams params = new RequestParams();	
+		params.put("channelCode", channelCode);
+		params.put("name", name);
+		params.put("packageVersionCode", packageVersionCode);
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 五十四、地摊吧启动次数计算
+	 * @param imei
+	 * @param scid
+	 * @param operation
+	 * @param mac
+	 * @param telphone
+	 * @param type
+	 * @param marketVersion
+	 */
+	public void caculateStartCount(String imei,String scid,String operation,String mac,String telphone,
+			int type,String marketVersion){
+		RequestParams params = new RequestParams();	
+		params.put("userBehavior.imei", imei);
+		params.put("userBehavior.scid", scid);
+		params.put("userBehavior.operation", operation);
+		params.put("userBehavior.mac", mac);
+		params.put("userBehavior.telphone", telphone);
+		params.put("userBehavior.type",type);
+		params.put("userBehavior.marketVersion", marketVersion);
+		HttpRequestUtil.setTaskParamsAndRequest(ManagerTask.this, params, HttpMethod.POST);
+	}
+	
+	
+	
+	
+
+}

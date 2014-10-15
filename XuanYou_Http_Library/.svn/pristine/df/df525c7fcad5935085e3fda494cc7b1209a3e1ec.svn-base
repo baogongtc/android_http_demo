@@ -1,0 +1,22 @@
+package android.xuanyou.http.engine;
+
+import android.xuanyou.http.entity.HttpMethod;
+import android.xuanyou.http.utils.HttpRequestUtil;
+
+import com.loopj.android.http.RequestParams;
+
+public abstract class DetailTask extends BaseHttpTask {
+
+	public DetailTask(String URL) {
+		super(URL);
+	}
+
+	public void aquireDetail(String id) {
+		acquireBaseDetail(id);
+	}
+	private void acquireBaseDetail(String id) {
+		RequestParams params = new RequestParams();
+		params.put("id", params);
+		HttpRequestUtil.setTaskParamsAndRequest(DetailTask.this, params, HttpMethod.GET);
+	}
+}

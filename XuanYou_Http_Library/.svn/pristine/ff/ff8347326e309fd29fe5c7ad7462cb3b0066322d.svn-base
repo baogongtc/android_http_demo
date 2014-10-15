@@ -1,0 +1,124 @@
+package android.xuanyou.http.engine;
+
+import android.xuanyou.http.entity.HttpMethod;
+import android.xuanyou.http.utils.HttpRequestUtil;
+
+import com.alibaba.fastjson.JSON;
+import com.loopj.android.http.RequestParams;
+
+public abstract class RecommentTask extends BaseHttpTask {
+
+	public RecommentTask(String URL) {
+		super(URL);
+	}
+	
+
+	/**
+	 * 一、推荐：精选 排行|应用：精选  排行|游戏： 精选 排行
+	 * @param pageSize
+	 * @param pageIndex
+	 * @param columnId
+	 * @param IMEI
+	 */
+	public void acquireList(int pageSize, int pageIndex, String columnId, String IMEI) {
+		RequestParams params = new RequestParams();
+		params.put("pageSize", pageSize);
+		params.put("pageIndex", pageIndex);
+		params.put("columnId", columnId);
+		params.put("IMEI", IMEI);
+		HttpRequestUtil.setTaskParamsAndRequest(RecommentTask.this, params, HttpMethod.GET);
+	}
+	
+	/**
+	 * 十、  应用下载（升级）列表接口
+	 * @param appId
+	 * @param id
+	 */
+	public void acquireDownloadList(String appId,String id){
+		RequestParams params = new RequestParams();
+		params.put("appId", appId);
+		params.put("id", id);
+		HttpRequestUtil.setTaskParamsAndRequest(RecommentTask.this, params, HttpMethod.POST);
+	}
+	
+
+	/**
+	 * 七、精选专题接口
+	 * @param id
+	 */
+	public void acquireSpecialSelection(String id){
+		RequestParams params = new RequestParams();
+		params.put("id", id);
+		HttpRequestUtil.setTaskParamsAndRequest(RecommentTask.this, params, HttpMethod.POST);
+	}
+	
+
+	/**
+	 * 二十八、客户端版本自动检测升级 安装成功汇报 记录接口
+	 * @param jsonStr
+	 */
+	public void versionUpdateReportBack(JSON jsonStr){
+		RequestParams params = new RequestParams();	
+		params.put("jsonStr", jsonStr);
+		HttpRequestUtil.setTaskParamsAndRequest(RecommentTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 31,32,33
+	 * 三十一、精选下的推荐
+	 * 三十二、应用游戏下分类的详情
+	 * 三十三、精选专题下的详情
+	 */
+	public void recommentInSelection(int pageSize,int pageIndex,String columnId,String IMEI){
+		RequestParams params = new RequestParams();	
+		params.put("pageSize", pageSize);
+		params.put("pageIndex", pageIndex);
+		params.put("columnId", columnId);
+		params.put("IMEI", IMEI);
+		HttpRequestUtil.setTaskParamsAndRequest(RecommentTask.this, params, HttpMethod.POST);
+	}
+	
+	
+	
+	/**
+	 * 三十七. 客户端终端数据分析统计记录接口
+	 */
+	public void terminalDataStatistics(String imei,String deviceName,String resolution,String network,
+			String operators,String marketVersion,String androidVersion,String channelCode){
+		RequestParams params = new RequestParams();	
+		params.put("imei", imei);
+		params.put("deviceName", deviceName);
+		params.put("resolution", resolution);
+		params.put("network", network);
+		params.put("operators", operators);
+		params.put("marketVersion",marketVersion);
+		params.put("androidVersion", androidVersion);
+		params.put("channelCode", channelCode);
+		HttpRequestUtil.setTaskParamsAndRequest(RecommentTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 三十七.用户修改 图片 接口
+	 * @param uid
+	 */
+	public void userModifyImage(String uid){
+		RequestParams params = new RequestParams();	
+		params.put("uid", uid);	
+		HttpRequestUtil.setTaskParamsAndRequest(RecommentTask.this, params, HttpMethod.POST);
+	}
+
+
+	/**
+	 * 四十.地摊吧启动激活接口
+	 */
+	public void startActivate(String imei,String scid,String marketVersion,String mac,String telphone){
+		RequestParams params = new RequestParams();	
+		params.put("clientActive.imei", imei);	
+		params.put("clientActive.scid", scid);	
+		params.put("clientActive.marketVersion", marketVersion);	
+		params.put("clientActive.mac", mac);	
+		params.put("clientActive.telphone", telphone);	
+		HttpRequestUtil.setTaskParamsAndRequest(RecommentTask.this, params, HttpMethod.POST);
+	}
+	
+}

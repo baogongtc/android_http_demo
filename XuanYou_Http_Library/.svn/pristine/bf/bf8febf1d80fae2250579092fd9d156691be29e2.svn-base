@@ -1,0 +1,151 @@
+package android.xuanyou.http.engine;
+
+import android.xuanyou.http.entity.HttpMethod;
+import android.xuanyou.http.utils.HttpRequestUtil;
+
+import com.loopj.android.http.RequestParams;
+
+public abstract class DetailTask extends BaseHttpTask {
+
+	public DetailTask(String URL) {
+		super(URL);
+	}
+
+	/**
+	 * 二、应用详情头部接口
+	 * 三、应用详情介绍接口
+	 * 四、应用（资讯/专题/娱乐)评论列表接口
+	 * @param id
+	 */
+	public void aquireDetail(String id) {
+		acquireBaseDetail(id);
+	}
+	private void acquireBaseDetail(String id) {
+		RequestParams params = new RequestParams();
+		params.put("id", params);
+		HttpRequestUtil.setTaskParamsAndRequest(DetailTask.this, params, HttpMethod.GET);
+	}
+	
+	/**
+	 * 二十一、客户端用户信息补充信息接口
+	 * @param id
+	 * @param email
+	 * @param mobile
+	 * @param sex
+	 * @param birthday
+	 * @param nationality
+	 * @param province
+	 * @param cities
+	 */
+	public void supplementUserInfo(String id,String email,String mobile,String sex,String birthday,String nationality,
+			 String province,String cities){
+		RequestParams params = new RequestParams();
+		params.put("user.id", id);
+		params.put("user.email", email);
+		params.put("user.mobile", mobile);
+		params.put("user.sex", sex);
+		params.put("user.birthday", birthday);
+		params.put("user.nationality", nationality);
+		params.put("user.province", province);
+		params.put("user.cities", cities);
+		HttpRequestUtil.setTaskParamsAndRequest(DetailTask.this, params, HttpMethod.POST);
+	}
+	
+	
+	/**
+	 * 八-1、客户端应用 升级接口
+	 * @param imei
+	 * @param channelCode
+	 * @param marketVersion
+	 */
+	public void clientUpdate(String imei,String channelCode,String marketVersion){
+		RequestParams params = new RequestParams();
+		params.put("imei", imei);
+		params.put("channelCode", channelCode);
+		params.put("marketVersion", marketVersion);
+		HttpRequestUtil.setTaskParamsAndRequest(DetailTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 八-2、客户端应用  得到升级列表 接口
+	 * 八-3、 客户端应用  得到小泡 接口
+	 * @param imei
+	 */
+	public void acquireClientUpdateResult(String imei){
+		RequestParams params = new RequestParams();
+		params.put("imei", imei);
+		HttpRequestUtil.setTaskParamsAndRequest(DetailTask.this, params, HttpMethod.POST);
+	}
+	
+	
+	/**
+	 * 四十二.用户反馈接口
+	 * @param imei
+	 * @param ownerId
+	 * @param contents
+	 * @param qq
+	 * @param telphone
+	 * @param email
+	 */
+	public void acquireUserFeedBack(String imei,String ownerId,String contents,String qq,
+			String telphone,String email){
+		RequestParams params = new RequestParams();
+		params.put("feedBack.imei", imei);
+		params.put("feedBack.ownerId", ownerId);
+		params.put("feedBack.contents", contents);
+		params.put("feedBack.qq", qq);
+		params.put("feedBack.telphone", telphone);
+		params.put("feedBack.email", email);
+		HttpRequestUtil.setTaskParamsAndRequest(DetailTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 四十三 自定义栏目接口
+	 */
+	public void acquireCustomFields(int pageSize,int pageIndex,String columnId){
+		
+		RequestParams params = new RequestParams();
+		params.put("pageSize", pageSize);
+		params.put("pageIndex", pageIndex);
+		params.put("columnId", columnId);
+		HttpRequestUtil.setTaskParamsAndRequest(DetailTask.this, params, HttpMethod.POST);
+	}
+	
+	
+	/**
+	 * 四十七、应用详情 下拉推送接口
+	 * @param imei
+	 * @param channelCode
+	 * @param versionCode
+	 */
+	public void acquirePushInDetails(String imei,String channelCode,String versionCode){
+		RequestParams params = new RequestParams();
+		params.put("imei", imei);
+		params.put("channelCode", channelCode);
+		params.put("versionCode", versionCode);
+		HttpRequestUtil.setTaskParamsAndRequest(DetailTask.this, params, HttpMethod.POST);
+	}
+	
+	/*
+	 * 四十八、下拉推送成功记录 接口
+	 */
+	public void reportPushSuccess(String imei,String channelCode,String cpId){
+		RequestParams params = new RequestParams();
+		params.put("imei", imei);
+		params.put("channelCode", channelCode);
+		params.put("cpId", cpId);
+		HttpRequestUtil.setTaskParamsAndRequest(DetailTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 四十九、应用是否已经收藏接口
+	 */
+	public void isCollected(String appId,String channelCode,int type,String suid){
+		RequestParams params = new RequestParams();
+		params.put("appId", appId);
+		params.put("channelCode", channelCode);
+		params.put("type", type);
+		params.put("suid", suid);
+		HttpRequestUtil.setTaskParamsAndRequest(DetailTask.this, params, HttpMethod.POST);
+	}
+}

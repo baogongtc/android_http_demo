@@ -1,0 +1,53 @@
+package android.xuanyou.http.engine;
+
+import android.xuanyou.http.entity.HttpMethod;
+import android.xuanyou.http.utils.HttpRequestUtil;
+
+import com.loopj.android.http.RequestParams;
+
+public abstract class SearchTask extends BaseHttpTask{
+
+	public SearchTask(String URL) {
+		super(URL);
+		// TODO Auto-generated constructor stub
+	}
+	/**
+	 * 获取搜索关键字列表、搜索应用(游戏/专题/娱乐)
+	 * @param pageSize
+	 * @param pageIndex
+	 * @param type
+	 */
+	public void seachKeyOrApp(int pageSize,int pageIndex,int type){
+		RequestParams params = new RequestParams();
+		params.put("pageSize", pageSize);
+		params.put("pageIndex", pageIndex);
+		params.put("type", type);
+		HttpRequestUtil.setTaskParamsAndRequest(SearchTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 搜索相关应用关键字列表接口
+	 * @param keyWords
+	 * @param pageSize
+	 * @param pageIndex
+	 * @param imei
+	 * @param channelCode
+	 * @param marketVersion
+	 * @param type
+	 * @param searchType
+	 */
+	public void searchResult(String keyWords,int pageSize,int pageIndex,String imei,
+			String channelCode,String marketVersion,int type,int searchType){
+		RequestParams params = new RequestParams();
+		params.put("keyWords", keyWords);
+		params.put("pageSize", pageSize);
+		params.put("pageIndex", pageIndex);
+		params.put("imei", imei);
+		params.put("channelCode", channelCode);
+		params.put("marketVersion", marketVersion);
+		params.put("type", type);
+		params.put("searchType", searchType);
+		HttpRequestUtil.setTaskParamsAndRequest(SearchTask.this, params, HttpMethod.POST);
+		
+	}
+}

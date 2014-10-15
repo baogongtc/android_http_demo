@@ -1,0 +1,45 @@
+/**
+ * Copyright 2014 xuanyou Inc. All rights reserved.
+ * - Powered by Team GOF. -
+ */
+
+package android.xuanyou.http.interf;
+
+import org.apache.http.HttpEntity;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import com.loopj.android.http.ResponseHandlerInterface;
+
+/**
+ * @ClassName: Postable
+ * @Description: 网络请求及回调
+ * @author jinsongliu
+ * @date 2014-9-15
+ * 
+ */
+
+public interface Postable {
+
+//	RequestHandle execute(AsyncHttpClient client, String URL, Header[] headers, HttpEntity entity, ResponseHandlerInterface responseHandler);
+
+	void execute(AsyncHttpClient client, String URL, RequestParams params, ResponseHandlerInterface responseHandler);
+
+	HttpEntity getRequestEntity();
+
+	AsyncHttpClient getAsyncHttpClient();
+
+	void setAsyncHttpClient(AsyncHttpClient client);
+
+	AsyncHttpResponseHandler getResponseHandler();
+
+	String getDefaultURL();
+
+//	Header[] getRequestHeaders();
+
+	boolean isRequestHeadersAllowed();
+
+	boolean isRequestBodyAllowed();
+
+}

@@ -1,0 +1,20 @@
+package android.xuanyou.http.utils;
+
+import com.loopj.android.http.RequestParams;
+
+import android.xuanyou.http.engine.BaseHttpTask;
+import android.xuanyou.http.entity.HttpMethod;
+
+public class HttpRequestUtil {
+
+	public static void requestWithoutParams(BaseHttpTask task, HttpMethod method) {
+		setTaskParamsAndRequest(task, null, method);
+	}
+
+	public static void setTaskParamsAndRequest(BaseHttpTask task, RequestParams params, HttpMethod method) {
+		task.setRequestParams(params);
+		task.setMethod(method);
+		task.request();
+	}
+
+}

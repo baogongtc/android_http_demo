@@ -1,0 +1,20 @@
+package android.xuanyou.http.engine;
+
+import android.xuanyou.http.entity.HttpMethod;
+import android.xuanyou.http.utils.HttpRequestUtil;
+
+import com.loopj.android.http.RequestParams;
+
+
+public abstract class CategoryTask extends BaseHttpTask {
+
+	public CategoryTask(String URL) {
+		super(URL);
+	}
+	public void acquireCategoryList(String id) {
+		RequestParams params = new RequestParams();
+		params.put("id", params);
+		HttpRequestUtil.setTaskParamsAndRequest(CategoryTask.this, params, HttpMethod.GET);
+	}
+
+}

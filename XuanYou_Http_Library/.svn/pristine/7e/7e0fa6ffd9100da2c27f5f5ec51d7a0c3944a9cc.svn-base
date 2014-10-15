@@ -1,0 +1,50 @@
+package android.xuanyou.http.engine;
+
+import android.xuanyou.http.entity.HttpMethod;
+import android.xuanyou.http.utils.HttpRequestUtil;
+
+import com.loopj.android.http.RequestParams;
+
+public abstract class DownloadTask extends BaseHttpTask {
+
+	public DownloadTask(String URL) {
+		super(URL);
+
+	}
+
+	// 下载接口需要补充！
+	// 九、应用下载接口
+
+	public void acquireDownloadDetail(String id) {
+		HttpRequestUtil.requestById(DownloadTask.this, id);
+	}
+
+	//构造传入url
+	public void download() {
+		HttpRequestUtil.requestWithoutParams(DownloadTask.this, HttpMethod.POST);
+	}
+
+	/**
+	 * 十、 应用下载（升级）列表接口
+	 * 
+	 * @param appId
+	 * @param id
+	 */
+	public void acquireDownloadList(String appId, String id) {
+		RequestParams params = new RequestParams();
+		params.put("appId", appId);
+		params.put("id", id);
+		HttpRequestUtil.setTaskParamsAndRequest(DownloadTask.this, params, HttpMethod.POST);
+	}
+	
+	/**
+	 * 六、用户下载历史接口
+	 * 
+	 * @param id
+	 */
+	public void acquireDownloadHistory(String id) {
+		HttpRequestUtil.requestById(DownloadTask.this, id);
+	}
+
+
+}
