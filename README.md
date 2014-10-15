@@ -1,7 +1,7 @@
 android_http_demo
 =================
 
- popular library " android Async http " demos ,implment some http request and download functions.
+ popular library " android async http " demos ,implment some http request and download functions.
  
 1、 Has implimented FileRangeAsyncHttpClient class to download files which also supports resume broken downloads.
 
