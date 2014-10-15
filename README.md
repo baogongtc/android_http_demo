@@ -1,4 +1,12 @@
 android_http_demo
 =================
 
- popular library android http impliment ,implment file download and other functions
+ popular library android http impliment ,implment file download and some other functions
+ 
+1、 Has implimented FileRangeAsyncHttpClient class to download files which also supports resume broken downloads.
+2、 provided a life cycle of download.you can impliment callback in your engine codes.
+3、 capsule some APIs .(which suports the ideas of sdk)
+4、 BaseHttpTask is for http request .
+
+if you find Bugs , welcome feedback.
+ 
